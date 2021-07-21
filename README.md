@@ -30,7 +30,7 @@
 ### 页面展示
 * 主页
   
-![主页](https://github.com/maxiaozhou1234/DropPhoneDown/blob/master/snapshot/1.png)
+  ![主页](https://github.com/maxiaozhou1234/DropPhoneDown/blob/master/snapshot/1.png)
   
 * 桌面组件[启用]
 

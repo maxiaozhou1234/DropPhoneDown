@@ -42,7 +42,10 @@ class Rule(private val enable: Boolean, private val period: Int) {
         val hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
         val minute = Calendar.getInstance().get(Calendar.MINUTE)
 
-        if ((hour >= startTime.first && minute >= startTime.second) && (hour <= endTime.first && minute <= endTime.second)) {
+        val flagA = hour > startTime.first || (hour == startTime.first && minute >= startTime.second)
+        val flagB = hour < endTime.first || (hour == endTime.first && minute <= endTime.second)
+
+        if (flagA && flagB) {
             return if (period == EVERY_DAY) {
                 true
             } else {

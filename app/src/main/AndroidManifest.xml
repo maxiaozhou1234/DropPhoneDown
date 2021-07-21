@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="save.my.ass">
+
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="false"
+        android:icon="@drawable/ic_app_phone"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/ic_app_phone"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <receiver
+            android:name=".NetBroadcastReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="action_update_config" />
+                <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
+                <!--时间广播必须动态注册-->
+                <!--<action android:name="android.intent.action.TIME_TICK" />-->
+                <action android:name="action_time_tick" />
+            </intent-filter>
+        </receiver>
+        <!--桌面插件-->
+        <receiver android:name=".KidWidgetProvider">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/kid_appwidget" />
+        </receiver>
+    </application>
+
+</manifest>
